@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <Component src="src/components/shared/head-links.htm" />
+    <title>AskChad - Turn Cold Leads Into Hot Revenue | Goldmine AI</title>
+    <meta
+      name="description"
+      content="AI-powered sales automation that re-engages dormant leads with human-sounding voice calls and SMS. Recover lost revenue in under 90 days with zero training required."
+    />
+    <meta name="keywords" content="AI sales automation, lead reactivation, sales AI, revenue recovery, voice AI, SMS automation, cold lead engagement" />
+    <meta name="author" content="AskChad" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://askchad.net/" />
+    <meta property="og:title" content="AskChad - Turn Cold Leads Into Hot Revenue | Goldmine AI" />
+    <meta property="og:description" content="AI-powered sales automation that re-engages dormant leads with human-sounding voice calls and SMS. Recover lost revenue in under 90 days." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://askchad.net/" />
+    <meta property="twitter:title" content="AskChad - Turn Cold Leads Into Hot Revenue | Goldmine AI" />
+    <meta property="twitter:description" content="AI-powered sales automation that re-engages dormant leads with human-sounding voice calls and SMS. Recover lost revenue in under 90 days." />
+  </head>
+  <body class="bg-background-2 dark:bg-background-5 overflow-x-hidden">
+    <Component src="src/components/pages/askchad/header.htm" />
+
+    <main>
+      <Component src="src/components/pages/askchad/hero.htm" />
+      <Component src="src/components/pages/askchad/features.htm" />
+      <Component src="src/components/pages/askchad/benefits.htm" />
+      <Component src="src/components/pages/askchad/how-it-works.htm" />
+      <Component src="src/components/pages/askchad/testimonials.htm" />
+      <Component src="src/components/pages/askchad/cta.htm" />
+    </main>
+
+    <Component src="src/components/pages/askchad/footer.htm" />
+
+    <script>
+      // Smooth scroll behavior for anchor links
+      document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scroll for all links with .smooth-scroll class
+        const smoothScrollLinks = document.querySelectorAll('a.smooth-scroll, a[href^="#"]');
+
+        smoothScrollLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // Only handle hash links
+            if (href && href.startsWith('#')) {
+              const targetId = href.substring(1);
+              const targetElement = document.getElementById(targetId);
+
+              if (targetElement) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                const mobileMenu = document.querySelector('.mobile-menu');
+                if (mobileMenu) {
+                  mobileMenu.style.transform = 'translateY(-100%)';
+                }
+
+                // Smooth scroll to target
+                targetElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+
+                // Update URL without jumping
+                history.pushState(null, null, href);
+              }
+            }
+          });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.nav-hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (hamburger && mobileMenu) {
+          hamburger.addEventListener('click', function() {
+            const isOpen = mobileMenu.style.transform === 'translateY(0%)';
+            mobileMenu.style.transform = isOpen ? 'translateY(-100%)' : 'translateY(0%)';
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
