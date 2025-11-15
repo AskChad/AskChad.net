@@ -8,12 +8,9 @@ import injectHTML from 'vite-plugin-html-inject';
 const getHtmlEntries = () => {
   const pagesDir = path.resolve(__dirname, '');
   const entries = {};
-  const files = fs.readdirSync(pagesDir);
-  const htmlFiles = files.filter((file) => file.endsWith('.html'));
-  htmlFiles.forEach((file) => {
-    const name = path.basename(file, '.html');
-    entries[name] = path.resolve(pagesDir, file);
-  });
+
+  // Only build index.html for production deployment
+  entries['index'] = path.resolve(pagesDir, 'index.html');
 
   return entries;
 };
