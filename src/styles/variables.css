@@ -5,16 +5,16 @@ All the varaiables are added here
   /* =============== FONTS =============== */
   --font-inter-tight: 'Inter Tight', sans-serif;
   /* =============== COLORS =============== */
-  /* AskChad Brand Colors - Navy Blue Primary */
-  --color-primary-50: #e6f0f7;
-  --color-primary-100: #cce1ef;
-  --color-primary-200: #99c3df;
-  --color-primary-300: #66a5cf;
-  --color-primary-400: #3387bf;
-  --color-primary-500: #0a3a5c;
-  --color-primary-600: #083049;
-  --color-primary-700: #062637;
-  --color-primary-800: #041c25;
+  /* AskChad Brand Colors - Teal/Cyan Primary */
+  --color-primary-50: #e0f7fa;
+  --color-primary-100: #b3ebf2;
+  --color-primary-200: #80deea;
+  --color-primary-300: #4dd0e1;
+  --color-primary-400: #26c6da;
+  --color-primary-500: #239DDB;
+  --color-primary-600: #1d8ec4;
+  --color-primary-700: #177da8;
+  --color-primary-800: #126b8c;
   --color-secondary: #333333;
   --color-accent: #fcfcfc;
   --color-split-text: #1a1a1c;
