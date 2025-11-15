@@ -9,6 +9,36 @@ Common Styles all over the sites
   opacity: 0;
 }
 
+/* AskChad Primary Color Utilities */
+.text-primary {
+  color: var(--color-primary-500);
+}
+
+.bg-primary {
+  background-color: var(--color-primary-500);
+}
+
+.fill-primary {
+  fill: var(--color-primary-500);
+}
+
+.border-primary {
+  border-color: var(--color-primary-500);
+}
+
+/* Dark mode variants */
+:where(.dark, .dark *) .dark\:text-primary {
+  color: var(--color-primary-400);
+}
+
+:where(.dark, .dark *) .dark\:bg-primary {
+  background-color: var(--color-primary-600);
+}
+
+:where(.dark, .dark *) .dark\:fill-primary {
+  fill: var(--color-primary-400);
+}
+
 /* ==========Container========== */
 
 @utility main-container {
