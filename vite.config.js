@@ -20,9 +20,12 @@ const jsToBottomNoModule = () => {
     name: 'no-attribute',
     transformIndexHtml(html) {
       html = html.replace(`type="module" crossorigin`, '');
-      let scriptTag = html.match(/<script[^>]*>(.*?)<\/script[^>]*>/)[0];
-      html = html.replace(scriptTag, '');
-      html = html.replace('<!-- SCRIPT -->', scriptTag);
+      const scriptMatch = html.match(/<script[^>]*>(.*?)<\/script[^>]*>/);
+      if (scriptMatch && scriptMatch[0]) {
+        let scriptTag = scriptMatch[0];
+        html = html.replace(scriptTag, '');
+        html = html.replace('<!-- SCRIPT -->', scriptTag);
+      }
       return html;
     },
   };
