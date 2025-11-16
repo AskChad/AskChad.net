@@ -1,6 +1,19 @@
 const initRevealElements = () => {
+  // Check if GSAP and ScrollTrigger are available
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    console.warn('GSAP or ScrollTrigger not loaded. Elements will be shown without animations.');
+    // Ensure all elements are visible even without animations
+    const elements = document.querySelectorAll('[data-ns-animate]');
+    elements.forEach((elem) => {
+      elem.style.opacity = '1';
+      elem.style.filter = 'none';
+      elem.style.transform = 'none';
+    });
+    return;
+  }
+
   const elements = document.querySelectorAll('[data-ns-animate]');
-  const Springer = window.Springer.default;
+  const Springer = window.Springer?.default;
   elements.forEach((elem) => {
     const duration = elem.getAttribute('data-duration')
       ? parseFloat(elem.getAttribute('data-duration'))
@@ -92,6 +105,30 @@ const initRevealElements = () => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+// Wait for both DOM and GSAP to be ready
+const waitForGSAP = () => {
+  return new Promise((resolve) => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      resolve();
+    } else {
+      // Check every 50ms for GSAP to load
+      const checkInterval = setInterval(() => {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          clearInterval(checkInterval);
+          resolve();
+        }
+      }, 50);
+
+      // Timeout after 3 seconds
+      setTimeout(() => {
+        clearInterval(checkInterval);
+        resolve(); // Resolve anyway to show content without animations
+      }, 3000);
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await waitForGSAP();
   initRevealElements();
 });
