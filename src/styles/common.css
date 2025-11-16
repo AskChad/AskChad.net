@@ -9,6 +9,19 @@ Common Styles all over the sites
   opacity: 0;
 }
 
+/* Hero Grid Fix for Tailwind v4 */
+.hero-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* AskChad Primary Color Utilities */
 .text-primary {
   color: var(--color-primary-500);
