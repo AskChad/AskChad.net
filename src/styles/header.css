@@ -83,5 +83,6 @@ Sidebar and header animations
 }
 
 .header-six-scroll {
-  @apply top-6 md:top-7 lg:top-5 bg-primary;
+  @apply top-6 md:top-7 lg:top-5;
+  background-color: var(--color-primary-500);
 }
