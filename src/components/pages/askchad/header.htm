@@ -3,7 +3,7 @@ AskChad Header with Smooth Scroll Navigation
 ===========================-->
 <header>
   <div
-    class="header-six rounded-full lp:!max-w-[1290px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] min-[500px]:max-w-[450px] min-[425px]:max-w-[380px] max-w-[350px] mx-auto w-full fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-2.5 xl:py-0 py-2.5 top-14 bg-white/10 dark:bg-background-7/40 backdrop-blur-[25px] has-top-nav"
+    class="header-six rounded-full lp:!max-w-[1290px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] min-[500px]:max-w-[450px] min-[425px]:max-w-[380px] max-w-[350px] mx-auto w-full fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-2.5 xl:py-0 py-2.5 top-5 bg-primary/95 dark:bg-background-7/40 backdrop-blur-[25px] has-top-nav"
     data-ns-animate
     data-direction="up"
     data-offset="20"
@@ -24,7 +24,7 @@ AskChad Header with Smooth Scroll Navigation
         <li class="relative nav-item cursor-pointer py-5">
           <a
             href="#features"
-            class="smooth-scroll nav-item-link-white flex items-center gap-1"
+            class="smooth-scroll flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors"
           >
             <span>Features</span>
           </a>
@@ -32,7 +32,7 @@ AskChad Header with Smooth Scroll Navigation
         <li class="relative nav-item cursor-pointer py-5">
           <a
             href="#benefits"
-            class="smooth-scroll nav-item-link-white flex items-center gap-1"
+            class="smooth-scroll flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors"
           >
             <span>Benefits</span>
           </a>
@@ -40,7 +40,7 @@ AskChad Header with Smooth Scroll Navigation
         <li class="relative nav-item cursor-pointer py-5">
           <a
             href="#how-it-works"
-            class="smooth-scroll nav-item-link-white flex items-center gap-1"
+            class="smooth-scroll flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors"
           >
             <span>How It Works</span>
           </a>
@@ -48,7 +48,7 @@ AskChad Header with Smooth Scroll Navigation
         <li class="relative nav-item cursor-pointer py-5">
           <a
             href="#testimonials"
-            class="smooth-scroll nav-item-link-white flex items-center gap-1"
+            class="smooth-scroll flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors"
           >
             <span>Testimonials</span>
           </a>
@@ -56,22 +56,96 @@ AskChad Header with Smooth Scroll Navigation
       </ul>
     </nav>
 
-    <div class="xl:flex hidden items-center justify-center">
+    <div class="xl:flex hidden items-center justify-center gap-3">
+      <!-- Theme Toggle Button -->
+      <button
+        id="theme-toggle"
+        class="size-10 rounded-full flex items-center justify-center bg-white/20 hover:bg-white/30 dark:bg-background-6 dark:hover:bg-background-7 transition-all duration-300"
+        aria-label="Toggle theme"
+      >
+        <svg
+          id="light-theme-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5 text-white dark:text-accent hidden"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          />
+        </svg>
+        <svg
+          id="dark-theme-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5 text-white dark:text-accent"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+          />
+        </svg>
+      </button>
+
       <a
         href="#demo"
-        class="smooth-scroll btn btn-md btn-secondary hover:btn-primary dark:btn-accent"
+        class="smooth-scroll btn btn-md bg-white text-primary hover:bg-white/90 dark:bg-accent dark:text-background-9 dark:hover:bg-accent/90 px-6"
       >
         <span>Watch Demo</span>
       </a>
     </div>
-    <div class="xl:hidden block">
+    <div class="xl:hidden flex items-center gap-2">
+      <!-- Mobile Theme Toggle -->
       <button
-        class="nav-hamburger flex flex-col gap-[5px] size-12 bg-white dark:bg-background-6 rounded-full items-center justify-center cursor-pointer border border-stroke-2"
+        id="theme-toggle-mobile"
+        class="size-10 rounded-full flex items-center justify-center bg-white/20 hover:bg-white/30 dark:bg-background-6 dark:hover:bg-background-7 transition-all duration-300"
+        aria-label="Toggle theme"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5 text-white dark:text-accent hidden light-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5 text-white dark:text-accent dark-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+          />
+        </svg>
+      </button>
+
+      <button
+        class="nav-hamburger flex flex-col gap-[5px] size-12 bg-white/20 dark:bg-background-6 rounded-full items-center justify-center cursor-pointer"
       >
         <span class="sr-only">Menu</span>
-        <span class="block w-6 h-0.5 bg-stroke-9 dark:bg-stroke-1"></span>
-        <span class="block w-6 h-0.5 bg-stroke-9 dark:bg-stroke-1"></span>
-        <span class="block w-6 h-0.5 bg-stroke-9 dark:bg-stroke-1"></span>
+        <span class="block w-6 h-0.5 bg-white dark:bg-accent"></span>
+        <span class="block w-6 h-0.5 bg-white dark:bg-accent"></span>
+        <span class="block w-6 h-0.5 bg-white dark:bg-accent"></span>
       </button>
     </div>
   </div>

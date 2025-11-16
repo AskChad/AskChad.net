@@ -29,6 +29,7 @@ const themeSwitcher = {
       darkIcon: document.getElementById('dark-theme-icon'),
       lightIcon: document.getElementById('light-theme-icon'),
       toggleBtn: document.getElementById('theme-toggle'),
+      toggleBtnMobile: document.getElementById('theme-toggle-mobile'),
       html: document.documentElement,
     };
   },
@@ -50,13 +51,21 @@ const themeSwitcher = {
   },
 
   bindEvents() {
-    const { toggleBtn } = this.elements;
-    if (!toggleBtn || this.isForcedPage) return;
+    const { toggleBtn, toggleBtnMobile } = this.elements;
+    if (this.isForcedPage) return;
 
-    toggleBtn.addEventListener('click', () => {
+    const handleToggle = () => {
       const isDark = this.elements.html.classList.contains('dark');
       this.setTheme(isDark ? 'light' : 'dark', { persist: true });
-    });
+    };
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', handleToggle);
+    }
+
+    if (toggleBtnMobile) {
+      toggleBtnMobile.addEventListener('click', handleToggle);
+    }
   },
 
   setTheme(theme, { persist = true } = {}) {
@@ -76,25 +85,49 @@ const themeSwitcher = {
 
   updateIcons(isDark) {
     const { darkIcon, lightIcon } = this.elements;
-    if (!darkIcon || !lightIcon) return;
 
-    const showIcon = isDark ? darkIcon : lightIcon;
-    const hideIcon = isDark ? lightIcon : darkIcon;
+    // Update desktop icons
+    if (darkIcon && lightIcon) {
+      const showIcon = isDark ? darkIcon : lightIcon;
+      const hideIcon = isDark ? lightIcon : darkIcon;
 
-    hideIcon.classList.add('hidden');
-    showIcon.classList.remove('hidden');
+      hideIcon.classList.add('hidden');
+      showIcon.classList.remove('hidden');
 
-    gsap.fromTo(
-      showIcon,
-      { x: 100, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: this.animationConfig.duration,
-        delay: this.animationConfig.delay,
-        ease: this.animationConfig.ease,
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(
+          showIcon,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: this.animationConfig.duration,
+            delay: this.animationConfig.delay,
+            ease: this.animationConfig.ease,
+          }
+        );
       }
-    );
+    }
+
+    // Update mobile icons
+    const lightIcons = document.querySelectorAll('.light-icon');
+    const darkIcons = document.querySelectorAll('.dark-icon');
+
+    lightIcons.forEach(icon => {
+      if (isDark) {
+        icon.classList.remove('hidden');
+      } else {
+        icon.classList.add('hidden');
+      }
+    });
+
+    darkIcons.forEach(icon => {
+      if (isDark) {
+        icon.classList.add('hidden');
+      } else {
+        icon.classList.remove('hidden');
+      }
+    });
   },
 };
 
