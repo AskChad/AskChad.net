@@ -1,5 +1,11 @@
 const glossaryAnimation = {
   init() {
+    // Check if GSAP is available
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP is not loaded. Glossary animations will be disabled.');
+      return;
+    }
+
     const glossaryFiltersButtons = document.querySelectorAll(
       '.glossary-filters-buttons-container button'
     );

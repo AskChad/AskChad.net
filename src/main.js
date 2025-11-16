@@ -28,4 +28,5 @@ import './js/utils/counter';
 import './js/utils/force-theme-switcher';
 import './js/utils/img-before-after-slider';
 import './js/utils/leaflet';
+import './js/utils/smooth-scroll';
 import './js/utils/theme-switcher';

@@ -84,6 +84,12 @@ const accordionAnimation = {
   },
 
   initAnimation() {
+    // Check if GSAP is available
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP is not loaded. Accordion animations will be disabled.');
+      return;
+    }
+
     this.accordionItems.forEach((item, index) => {
       // Set initial state
       gsap.set(item, {
@@ -131,30 +137,50 @@ const accordionAnimation = {
     const contentHeight = content.scrollHeight;
     content.style.height = '0px';
 
-    gsap.to(content, {
-      height: contentHeight,
-      opacity: 1,
-      duration: 0.3,
-    });
-
-    if (plusIconSpans.length > 0) {
-      gsap.to(plusIconSpans[1], {
-        rotation: 90,
+    // Use GSAP if available, otherwise use CSS transition
+    if (typeof gsap !== 'undefined') {
+      gsap.to(content, {
+        height: contentHeight,
+        opacity: 1,
         duration: 0.3,
-        ease: 'power2.out',
-        onComplete: () => {
-          plusIconSpans[1].setAttribute('data-state', 'true');
-        },
       });
-    }
 
-    if (accordionArrow) {
-      accordionArrow.setAttribute('data-state', 'true');
-      gsap.to(accordionArrow, {
-        rotation: -180,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+      if (plusIconSpans.length > 0) {
+        gsap.to(plusIconSpans[1], {
+          rotation: 90,
+          duration: 0.3,
+          ease: 'power2.out',
+          onComplete: () => {
+            plusIconSpans[1].setAttribute('data-state', 'true');
+          },
+        });
+      }
+
+      if (accordionArrow) {
+        accordionArrow.setAttribute('data-state', 'true');
+        gsap.to(accordionArrow, {
+          rotation: -180,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      }
+    } else {
+      // Fallback without GSAP
+      content.style.height = contentHeight + 'px';
+      content.style.opacity = '1';
+      content.style.transition = 'height 0.3s ease, opacity 0.3s ease';
+
+      if (plusIconSpans.length > 0) {
+        plusIconSpans[1].style.transform = 'rotate(90deg)';
+        plusIconSpans[1].style.transition = 'transform 0.3s ease';
+        plusIconSpans[1].setAttribute('data-state', 'true');
+      }
+
+      if (accordionArrow) {
+        accordionArrow.setAttribute('data-state', 'true');
+        accordionArrow.style.transform = 'rotate(-180deg)';
+        accordionArrow.style.transition = 'transform 0.3s ease';
+      }
     }
 
     if (accordionArrowSpan) {
@@ -170,39 +196,62 @@ const accordionAnimation = {
 
     content.style.height = 'auto';
     const contentHeight = content.scrollHeight;
-
     content.style.height = contentHeight + 'px';
 
-    gsap.to(content, {
-      height: 0,
-      opacity: 0,
-      duration: 0.5,
-      onComplete: () => {
-        content.classList.add('hidden');
-        content.style.height = '0px';
-      },
-    });
-
-    // Animate minus icon back to plus (if exists)
-    if (plusIconSpans.length > 0) {
-      gsap.to(plusIconSpans[1], {
-        rotation: 0,
+    // Use GSAP if available, otherwise use CSS transition
+    if (typeof gsap !== 'undefined') {
+      gsap.to(content, {
+        height: 0,
+        opacity: 0,
         duration: 0.5,
-        ease: 'power2.out',
         onComplete: () => {
-          plusIconSpans[1].setAttribute('data-state', 'false');
+          content.classList.add('hidden');
+          content.style.height = '0px';
         },
       });
-    }
 
-    // Animate accordion arrow back (if exists)
-    if (accordionArrow) {
-      accordionArrow.setAttribute('data-state', 'false');
-      gsap.to(accordionArrow, {
-        rotation: 0,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
+      // Animate minus icon back to plus (if exists)
+      if (plusIconSpans.length > 0) {
+        gsap.to(plusIconSpans[1], {
+          rotation: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+          onComplete: () => {
+            plusIconSpans[1].setAttribute('data-state', 'false');
+          },
+        });
+      }
+
+      // Animate accordion arrow back (if exists)
+      if (accordionArrow) {
+        accordionArrow.setAttribute('data-state', 'false');
+        gsap.to(accordionArrow, {
+          rotation: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+      }
+    } else {
+      // Fallback without GSAP
+      content.style.height = '0px';
+      content.style.opacity = '0';
+      content.style.transition = 'height 0.5s ease, opacity 0.5s ease';
+
+      setTimeout(() => {
+        content.classList.add('hidden');
+      }, 500);
+
+      if (plusIconSpans.length > 0) {
+        plusIconSpans[1].style.transform = 'rotate(0deg)';
+        plusIconSpans[1].style.transition = 'transform 0.5s ease';
+        plusIconSpans[1].setAttribute('data-state', 'false');
+      }
+
+      if (accordionArrow) {
+        accordionArrow.setAttribute('data-state', 'false');
+        accordionArrow.style.transform = 'rotate(0deg)';
+        accordionArrow.style.transition = 'transform 0.5s ease';
+      }
     }
 
     if (accordionArrowSpan) {

@@ -95,6 +95,12 @@ function updateDropdownCounts() {
    ======================================== */
 
 function animateVisibleCards() {
+  // Check if GSAP is available
+  if (typeof gsap === 'undefined') {
+    console.warn('GSAP is not loaded. Customer success stories animations will be disabled.');
+    return;
+  }
+
   const visibleCards = document.querySelectorAll(
     '.story-card[style*="display: block"], .story-card:not([style*="display: none"])'
   );

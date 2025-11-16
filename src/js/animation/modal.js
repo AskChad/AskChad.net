@@ -140,14 +140,28 @@ class ModalAnimation {
 
     try {
       if (this.modalContent) {
-        await gsap.to(this.modalContent, {
-          ...this.animationConfig.close,
-          onComplete: () => {
+        // Use GSAP if available, otherwise use CSS
+        if (typeof gsap !== 'undefined') {
+          await gsap.to(this.modalContent, {
+            ...this.animationConfig.close,
+            onComplete: () => {
+              this.modalOverlay.classList.remove('modal-open');
+              this.modalOverlay.classList.add('modal-close');
+              this.modalOverlay.setAttribute('aria-hidden', 'true');
+            },
+          });
+        } else {
+          // Fallback without GSAP
+          this.modalContent.style.opacity = '0';
+          this.modalContent.style.transform = 'translateY(-50px)';
+          this.modalContent.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+
+          setTimeout(() => {
             this.modalOverlay.classList.remove('modal-open');
             this.modalOverlay.classList.add('modal-close');
             this.modalOverlay.setAttribute('aria-hidden', 'true');
-          },
-        });
+          }, 200);
+        }
       } else {
         this.modalOverlay.classList.remove('modal-open');
         this.modalOverlay.classList.add('modal-close');
@@ -176,12 +190,21 @@ class ModalAnimation {
     this.modalOverlay.setAttribute('aria-hidden', 'false');
 
     if (this.modalContent) {
-      gsap.set(this.modalContent, {
-        opacity: 0,
-        y: -50,
-      });
+      // Use GSAP if available, otherwise use CSS
+      if (typeof gsap !== 'undefined') {
+        gsap.set(this.modalContent, {
+          opacity: 0,
+          y: -50,
+        });
 
-      gsap.to(this.modalContent, this.animationConfig.open);
+        gsap.to(this.modalContent, this.animationConfig.open);
+      } else {
+        // Fallback without GSAP
+        this.modalContent.style.opacity = '1';
+        this.modalContent.style.transform = 'translateY(0)';
+        this.modalContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      }
+
       this.previouslyFocusedElement = document.activeElement;
       this.modalContent.style.outline = 'none';
       this.modalContent.style.boxShadow = 'none';

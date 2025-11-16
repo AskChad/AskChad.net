@@ -127,10 +127,20 @@ export default defineConfig({
         },
       },
     },
-    minify: false,
+    minify: 'terser',
     modulePreload: false,
-    cssMinify: false,
+    cssMinify: 'lightningcss',
     assetsDir: 'assets',
+    terserOptions: {
+      compress: {
+        drop_console: false,
+        drop_debugger: true,
+        passes: 2,
+      },
+      format: {
+        comments: /@license|@preserve|@format|@version/i,
+      },
+    },
   },
   server: {
     open: true,

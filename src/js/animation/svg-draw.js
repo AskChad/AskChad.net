@@ -1,5 +1,11 @@
 const svgDraw = {
   init() {
+    // Check if GSAP and required plugins are available
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof DrawSVGPlugin === 'undefined') {
+      console.warn('GSAP or required plugins not loaded. SVG draw animations will be disabled.');
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
     const selectors = ['#svg-one', '#svg-two', '#svg-three'];

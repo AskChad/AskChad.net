@@ -42,6 +42,12 @@ const testimonials = [
 
 const sliderAnimation = {
   init() {
+    // Check if GSAP is available
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP is not loaded. Testimonial slider animations will be disabled.');
+      return;
+    }
+
     let currentIndex = 0;
 
     const avatarImgs = document.querySelectorAll('.testimonial-avatar');
