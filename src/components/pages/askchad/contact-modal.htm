@@ -3,7 +3,7 @@ Contact Us Modal
 ===========================-->
 <div
   id="contact-modal"
-  class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+  class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/50 backdrop-blur-sm overflow-hidden"
 >
   <div
     class="relative bg-white dark:bg-background-8 rounded-2xl shadow-2xl max-w-2xl w-full mx-4 my-8 flex flex-col"
@@ -151,6 +151,8 @@ Contact Us Modal
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
       });
     });
 
@@ -159,6 +161,8 @@ Contact Us Modal
       modal.classList.add('hidden');
       modal.classList.remove('flex');
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
       form.reset();
       successMessage.classList.add('hidden');
     }
@@ -178,6 +182,11 @@ Contact Us Modal
         closeModal();
       }
     });
+
+    // Prevent background scroll when modal is open
+    modal.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+    }, { passive: true });
 
     // Form submission
     form.addEventListener('submit', (e) => {
