@@ -13,6 +13,7 @@ const getHtmlEntries = () => {
   entries['index'] = path.resolve(pagesDir, 'index.html');
   entries['privacy'] = path.resolve(pagesDir, 'privacy.html');
   entries['tos'] = path.resolve(pagesDir, 'tos.html');
+  entries['askchadmin'] = path.resolve(pagesDir, 'askchadmin.html');
 
   return entries;
 };
