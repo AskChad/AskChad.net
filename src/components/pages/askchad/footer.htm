@@ -127,8 +127,12 @@ Footer
 
     <div class="pt-8 border-t border-stroke-2 dark:border-stroke-6 text-center">
       <p class="text-sm text-secondary dark:text-accent/60">
-        &copy; 2025 AskChad. All rights reserved.
+        &copy; 2010-<span id="current-year"></span> AskChad. All rights reserved.
       </p>
     </div>
   </div>
 </footer>
+
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
