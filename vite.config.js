@@ -9,8 +9,10 @@ const getHtmlEntries = () => {
   const pagesDir = path.resolve(__dirname, '');
   const entries = {};
 
-  // Only build index.html for production deployment
+  // Build index.html and legal pages for production deployment
   entries['index'] = path.resolve(pagesDir, 'index.html');
+  entries['privacy'] = path.resolve(pagesDir, 'privacy.html');
+  entries['TOS'] = path.resolve(pagesDir, 'TOS.html');
 
   return entries;
 };
