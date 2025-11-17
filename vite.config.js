@@ -12,7 +12,7 @@ const getHtmlEntries = () => {
   // Build index.html and legal pages for production deployment
   entries['index'] = path.resolve(pagesDir, 'index.html');
   entries['privacy'] = path.resolve(pagesDir, 'privacy.html');
-  entries['TOS'] = path.resolve(pagesDir, 'TOS.html');
+  entries['tos'] = path.resolve(pagesDir, 'tos.html');
 
   return entries;
 };
