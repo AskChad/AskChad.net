@@ -160,7 +160,7 @@
             </p>
             <div class="bg-gray-50 dark:bg-background-6 p-6 rounded-lg mb-4">
               <p class="text-secondary dark:text-accent">
-                <strong>Privacy Policy:</strong> <a href="https://www.askchad.net/privacy.html" class="text-primary dark:text-accent hover:underline font-semibold">https://www.askchad.net/privacy.html</a>
+                <strong>Privacy Policy:</strong> <a href="/privacy.html" id="privacy-policy-link" class="text-primary dark:text-accent hover:underline font-semibold"></a>
               </p>
             </div>
             <p class="text-secondary/80 dark:text-accent/80">
@@ -311,13 +311,17 @@
     <!-- SCRIPT -->
     <script type="module" src="./src/main.js"></script>
 
-    <!-- Auto-update date -->
+    <!-- Auto-update date and dynamic links -->
     <script>
       document.getElementById('last-updated-date').textContent = new Date().toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
       });
+
+      // Set privacy policy link to current domain
+      const privacyLink = document.getElementById('privacy-policy-link');
+      privacyLink.textContent = window.location.origin + '/privacy.html';
     </script>
   </body>
 </html>
