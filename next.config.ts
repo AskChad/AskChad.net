@@ -5,3 +5,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+// Trigger redeploy Tue Nov 18 14:50:15 PST 2025
