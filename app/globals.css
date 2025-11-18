@@ -1,0 +1,17 @@
+@import '../src/styles/variables.css';
+@import '../src/styles/icon-font.css';
+@import '../src/styles/typography.css';
+@import '../src/styles/common.css';
+@import 'tailwindcss';
+@import '../src/styles/base.css';
+@import '../src/styles/button.css';
+@import '../src/styles/badge.css';
+@import '../src/styles/header.css';
+@import '../src/styles/navigation-menu.css';
+@import '../src/styles/vendor/vanilla-infinite-marquee.min.css';
+@import '../src/styles/vendor/swiper.min.css';
+@import '../src/styles/vendor/leaflet.min.css';
+@import '../src/styles/custom-swiper.css';
+@import '../src/styles/number-animation.css';
+
+@custom-variant dark (&:where(.dark, .dark *));

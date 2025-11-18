@@ -31,6 +31,9 @@ build/
 # Template reference (not for git)
 template/
 
+# Vite backup (not for git)
+vite-backup/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

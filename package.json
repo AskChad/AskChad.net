@@ -1,23 +1,35 @@
 {
   "name": "askchad",
-  "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build && node post-build.js",
-    "build:clean": "vite build && node post-build.js",
-    "preview": "vite preview --host 0.0.0.0",
-    "format": "prettier --write ."
-  },
-  "devDependencies": {
-    "prettier": "^3.6.2",
-    "terser": "^5.43.1",
-    "vite": "^6.3.1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.4",
-    "tailwindcss": "^4.1.4",
-    "vite-plugin-html-inject": "^1.1.2"
+    "next": "16.0.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "@supabase/supabase-js": "^2.39.8",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.22.4",
+    "react-hook-form": "^7.50.1",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
