@@ -190,19 +190,6 @@ export default function ContactModal() {
                 </label>
               </div>
 
-              {/* Privacy Policy and Terms Links */}
-              <div className="text-xs text-secondary/60 dark:text-accent/60">
-                By submitting this form, you agree to our{' '}
-                <a href="/privacy.html" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
-                  Privacy Policy
-                </a>
-                {' '}and{' '}
-                <a href="/tos.html" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
-                  Terms of Service
-                </a>
-                .
-              </div>
-
               {/* Submit Button */}
               <button
                 type="submit"
@@ -210,6 +197,17 @@ export default function ContactModal() {
               >
                 Send Message
               </button>
+
+              {/* Privacy Policy and Terms Links */}
+              <div className="text-xs text-center text-secondary/60 dark:text-accent/60">
+                <a href="/privacy" className="text-primary dark:text-accent hover:underline">
+                  Privacy Policy
+                </a>
+                {' | '}
+                <a href="/tos" className="text-primary dark:text-accent hover:underline">
+                  Terms and Conditions
+                </a>
+              </div>
             </form>
           ) : (
             /* Success Message */
