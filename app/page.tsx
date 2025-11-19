@@ -8,6 +8,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Home() {
+  // Function to open contact modal
+  const openContactModal = () => {
+    if (typeof window !== 'undefined' && (window as any).openContactModal) {
+      (window as any).openContactModal()
+    }
+  }
+
   // Smooth scroll functionality
   useEffect(() => {
     const handleSmoothScroll = (e: MouseEvent) => {
@@ -76,9 +83,9 @@ export default function Home() {
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-5 justify-start items-start">
-                  <Link href="https://calendly.com/askchad/demo" target="_blank" rel="noopener noreferrer" className="btn bg-primary text-white hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto">
+                  <button onClick={openContactModal} className="btn bg-primary text-white hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto">
                     <span>Schedule Demo</span>
-                  </Link>
+                  </button>
                   <a href="#features" className="btn bg-white text-secondary border-2 border-stroke-3 hover:bg-primary/10 hover:border-primary dark:bg-background-6 dark:text-accent dark:border-stroke-7 dark:hover:border-primary-400 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 w-full sm:w-auto">
                     <span>See How It Works</span>
                   </a>
@@ -474,13 +481,13 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                  <Link href="#" className="btn bg-white text-secondary hover:bg-white/90 dark:bg-white dark:text-secondary dark:hover:bg-white/90 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto flex items-center justify-center" aria-label="Watch Demo Now">
+                  <button onClick={openContactModal} className="btn bg-white text-secondary hover:bg-white/90 dark:bg-white dark:text-secondary dark:hover:bg-white/90 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto flex items-center justify-center" aria-label="Watch Demo Now">
                     <svg xmlns="http://www.w3.org/2000/svg" className="size-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span>Watch 2-Minute Demo</span>
-                  </Link>
+                  </button>
                   <a href="#features" className="btn bg-white/20 text-white hover:bg-white/30 dark:bg-secondary/20 dark:hover:bg-secondary/30 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 w-full sm:w-auto" aria-label="Learn More">
                     <span>Learn More</span>
                   </a>
