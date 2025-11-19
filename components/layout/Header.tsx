@@ -39,11 +39,11 @@ export default function Header() {
         <div>
           <Link href="/">
             <span className="sr-only">AskChad - Home</span>
-            <figure className="lg:max-w-[198px] lg:block hidden">
-              <Image src="/images/askchad/logo.png" alt="AskChad" width={198} height={48} className="h-12" />
+            <figure className="lg:block hidden">
+              <Image src="/images/askchad/logo.png" alt="AskChad" width={300} height={136} className="h-12 w-auto" />
             </figure>
-            <figure className="max-w-[44px] lg:hidden block">
-              <Image src="/images/askchad/logo.png" alt="AskChad" width={44} height={40} className="w-full h-10" />
+            <figure className="lg:hidden block">
+              <Image src="/images/askchad/logo.png" alt="AskChad" width={300} height={136} className="h-10 w-auto" />
             </figure>
           </Link>
         </div>
