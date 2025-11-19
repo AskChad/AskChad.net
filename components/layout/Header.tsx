@@ -51,22 +51,22 @@ export default function Header() {
         <nav className="hidden xl:flex items-center">
           <ul className="flex items-center gap-6">
             <li className="relative nav-item cursor-pointer py-5">
-              <a href="#features" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
+              <a href="/#features" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
                 <span>Features</span>
               </a>
             </li>
             <li className="relative nav-item cursor-pointer py-5">
-              <a href="#benefits" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
+              <a href="/#benefits" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
                 <span>Benefits</span>
               </a>
             </li>
             <li className="relative nav-item cursor-pointer py-5">
-              <a href="#how-it-works" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
+              <a href="/#how-it-works" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
                 <span>How It Works</span>
               </a>
             </li>
             <li className="relative nav-item cursor-pointer py-5">
-              <a href="#testimonials" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
+              <a href="/#testimonials" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
                 <span>Testimonials</span>
               </a>
             </li>
@@ -179,22 +179,22 @@ export default function Header() {
             <nav>
               <ul className="space-y-4">
                 <li>
-                  <a href="#features" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
+                  <a href="/#features" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#benefits" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
+                  <a href="/#benefits" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
                     Benefits
                   </a>
                 </li>
                 <li>
-                  <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
+                  <a href="/#how-it-works" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
                     How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
+                  <a href="/#testimonials" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
                     Testimonials
                   </a>
                 </li>
@@ -205,7 +205,7 @@ export default function Header() {
                 </li>
               </ul>
               <div className="mt-6 pt-6 border-t border-stroke-3 dark:border-stroke-7">
-                <a href="#demo" onClick={() => setIsMenuOpen(false)} className="btn w-full bg-primary text-white hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700 px-6 py-3 rounded-lg font-semibold">
+                <a href="/#demo" onClick={() => setIsMenuOpen(false)} className="btn w-full bg-primary text-white hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700 px-6 py-3 rounded-lg font-semibold">
                   Watch Demo
                 </a>
               </div>
