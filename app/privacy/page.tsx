@@ -165,8 +165,8 @@ export default function PrivacyPage() {
                 <ul className="list-disc pl-6 mb-4 text-secondary/80 dark:text-accent/80 space-y-2">
                   <li><strong>Text STOP, STOPALL, CANCEL, UNSUBSCRIBE, END, or QUIT</strong> to the number from which you received messages</li>
                   <li><strong>Reply to any text message</strong> with a clear opt-out request (e.g., "Leave me alone", "Unsubscribe me")</li>
-                  <li><strong>Email us</strong> at <a href="mailto:support@askchad.net" className="text-primary dark:text-accent hover:underline font-bold">support@askchad.net</a> with your opt-out request</li>
-                  <li><strong>Call us</strong> at <a href="tel:+18889991111" className="text-primary dark:text-accent hover:underline font-bold">(888) 999-1111</a> to request removal</li>
+                  <li><strong>Email us</strong> at <a href="mailto:compliance@askchad.net" className="text-primary dark:text-accent hover:underline font-bold">compliance@askchad.net</a> with your opt-out request</li>
+                  <li><strong>Call us</strong> at <a href="tel:+14087538176" className="text-primary dark:text-accent hover:underline font-bold">(408) 753-8176</a> to request removal</li>
                 </ul>
                 <p className="text-secondary/80 dark:text-accent/80 mt-4">
                   <strong>We will process your opt-out request within 5 minutes</strong> and you may receive one final confirmation message confirming your opt-out status.
@@ -201,7 +201,7 @@ export default function PrivacyPage() {
                     <span className="text-2xl">📧</span>
                     <div>
                       <p className="text-secondary dark:text-accent font-semibold mb-1">Email:</p>
-                      <a href="mailto:support@askchad.net" className="text-primary dark:text-accent hover:underline text-lg">support@askchad.net</a>
+                      <a href="mailto:compliance@askchad.net" className="text-primary dark:text-accent hover:underline text-lg">compliance@askchad.net</a>
                       <p className="text-sm text-secondary/60 dark:text-accent/60 mt-1">Response time: Within 24-48 hours</p>
                     </div>
                   </div>
@@ -210,8 +210,8 @@ export default function PrivacyPage() {
                     <span className="text-2xl">📞</span>
                     <div>
                       <p className="text-secondary dark:text-accent font-semibold mb-1">Phone:</p>
-                      <a href="tel:+18889991111" className="text-primary dark:text-accent hover:underline text-lg">(888) 999-1111</a>
-                      <p className="text-sm text-secondary/60 dark:text-accent/60 mt-1">Business Hours: Monday-Friday, 9 AM - 5 PM EST</p>
+                      <a href="tel:+14087538176" className="text-primary dark:text-accent hover:underline text-lg">(408) 753-8176</a>
+                      <p className="text-sm text-secondary/60 dark:text-accent/60 mt-1">Business Hours: Monday-Friday, 9 AM - 5 PM PST</p>
                     </div>
                   </div>
 
