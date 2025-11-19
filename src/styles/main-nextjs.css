@@ -1,0 +1,19 @@
+/* Main CSS for Next.js - excludes vendor CSS with image dependencies */
+@import './variables';
+@import './icon-font';
+@import './typography';
+@import './common';
+@import 'tailwindcss';
+@import './base';
+@import './button';
+@import './badge';
+@import './header';
+@import './navigation-menu';
+/* Vendor CSS with image dependencies commented out for Next.js compatibility */
+/* @import './vendor/vanilla-infinite-marquee.min.css'; */
+/* @import './vendor/swiper.min.css'; */
+/* @import './vendor/leaflet.min.css'; */
+@import './custom-swiper';
+@import './number-animation';
+
+@custom-variant dark (&:where(.dark, .dark *));
