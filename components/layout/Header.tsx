@@ -71,9 +71,9 @@ export default function Header() {
               </a>
             </li>
             <li className="relative nav-item cursor-pointer py-5">
-              <button onClick={openContactModal} className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
+              <Link href="/contact" className="flex items-center gap-1 text-white/90 hover:text-white dark:text-accent/80 dark:hover:text-accent transition-colors">
                 <span>Contact Us</span>
-              </button>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -199,9 +199,9 @@ export default function Header() {
                   </a>
                 </li>
                 <li>
-                  <button onClick={() => { openContactModal(); setIsMenuOpen(false); }} className="block py-2 w-full text-left text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
+                  <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="block py-2 text-secondary dark:text-accent hover:text-primary dark:hover:text-primary-400 transition-colors">
                     Contact Us
-                  </button>
+                  </Link>
                 </li>
               </ul>
               <div className="mt-6 pt-6 border-t border-stroke-3 dark:border-stroke-7">
