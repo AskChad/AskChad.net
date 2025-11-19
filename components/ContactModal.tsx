@@ -200,11 +200,11 @@ export default function ContactModal() {
 
               {/* Privacy Policy and Terms Links */}
               <div className="text-xs text-center text-secondary/60 dark:text-accent/60">
-                <a href="/privacy.html" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
                   Privacy Policy
                 </a>
                 {' | '}
-                <a href="/tos.html" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
+                <a href="/tos" target="_blank" rel="noopener noreferrer" className="text-primary dark:text-accent hover:underline">
                   Terms and Conditions
                 </a>
               </div>
