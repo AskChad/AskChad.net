@@ -1,13 +1,43 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 
+interface A2PSettings {
+  company_name: string
+  support_email: string
+  support_phone: string
+  business_hours: string
+  time_zone: string
+  marketing_consent_text: string
+  transactional_consent_text: string
+}
+
 export default function ContactPage() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [a2pSettings, setA2PSettings] = useState<A2PSettings | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    loadA2PSettings()
+  }, [])
+
+  async function loadA2PSettings() {
+    try {
+      const response = await fetch('/api/a2p-settings')
+      if (response.ok) {
+        const data = await response.json()
+        setA2PSettings(data.settings)
+      }
+    } catch (error) {
+      console.error('Error loading A2P settings:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -56,8 +86,8 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="font-semibold text-secondary dark:text-accent mb-2">Email</h3>
-              <a href="mailto:info@askchad.net" className="text-primary dark:text-accent hover:underline">
-                info@askchad.net
+              <a href={`mailto:${a2pSettings?.support_email || 'info@askchad.net'}`} className="text-primary dark:text-accent hover:underline">
+                {a2pSettings?.support_email || 'info@askchad.net'}
               </a>
             </div>
 
@@ -68,10 +98,14 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="font-semibold text-secondary dark:text-accent mb-2">Phone</h3>
-              <a href="tel:+14087538176" className="text-primary dark:text-accent hover:underline">
-                (408) 753-8176
+              <a href={`tel:${a2pSettings?.support_phone?.replace(/[^0-9+]/g, '') || '+14087538176'}`} className="text-primary dark:text-accent hover:underline">
+                {a2pSettings?.support_phone || '(408) 753-8176'}
               </a>
-              <p className="text-xs text-secondary/60 dark:text-accent/60 mt-1">Mon-Fri, 9 AM - 5 PM PST</p>
+              <p className="text-xs text-secondary/60 dark:text-accent/60 mt-1">
+                {a2pSettings?.business_hours && a2pSettings?.time_zone
+                  ? `${a2pSettings.business_hours} ${a2pSettings.time_zone}`
+                  : 'Mon-Fri, 9 AM - 5 PM PST'}
+              </p>
             </div>
 
             <div className="bg-white dark:bg-background-8 p-6 rounded-xl shadow-lg text-center">
@@ -184,7 +218,7 @@ export default function ContactPage() {
                     className="mt-1 size-5 rounded border-stroke-3 dark:border-stroke-7 text-primary dark:text-accent focus:ring-2 focus:ring-primary dark:focus:ring-accent cursor-pointer"
                   />
                   <label htmlFor="sms-marketing-consent" className="text-sm text-secondary/80 dark:text-accent/80 cursor-pointer">
-                    I agree to receive automated marketing text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.
+                    {a2pSettings?.marketing_consent_text || 'I agree to receive automated marketing text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.'}
                   </label>
                 </div>
 
@@ -197,7 +231,7 @@ export default function ContactPage() {
                     className="mt-1 size-5 rounded border-stroke-3 dark:border-stroke-7 text-primary dark:text-accent focus:ring-2 focus:ring-primary dark:focus:ring-accent cursor-pointer"
                   />
                   <label htmlFor="sms-transactional-consent" className="text-sm text-secondary/80 dark:text-accent/80 cursor-pointer">
-                    I agree to receive automated transactional and service-based text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.
+                    {a2pSettings?.transactional_consent_text || 'I agree to receive automated transactional and service-based text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.'}
                   </label>
                 </div>
 

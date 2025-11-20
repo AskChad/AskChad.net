@@ -3,9 +3,36 @@
 import { useState, useEffect, FormEvent } from 'react'
 import Image from 'next/image'
 
+interface A2PSettings {
+  company_name: string
+  support_email: string
+  support_phone: string
+  business_hours: string
+  time_zone: string
+  marketing_consent_text: string
+  transactional_consent_text: string
+}
+
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [a2pSettings, setA2PSettings] = useState<A2PSettings | null>(null)
+
+  // Load A2P settings
+  useEffect(() => {
+    async function loadA2PSettings() {
+      try {
+        const response = await fetch('/api/a2p-settings')
+        if (response.ok) {
+          const data = await response.json()
+          setA2PSettings(data.settings)
+        }
+      } catch (error) {
+        console.error('Error loading A2P settings:', error)
+      }
+    }
+    loadA2PSettings()
+  }, [])
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -173,7 +200,7 @@ export default function ContactModal() {
                   className="mt-1 size-5 rounded border-stroke-3 dark:border-stroke-7 text-primary dark:text-accent focus:ring-2 focus:ring-primary dark:focus:ring-accent cursor-pointer"
                 />
                 <label htmlFor="sms-marketing-consent" className="text-sm text-secondary/80 dark:text-accent/80 cursor-pointer">
-                  I agree to receive automated marketing text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.
+                  {a2pSettings?.marketing_consent_text || 'I agree to receive automated marketing text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.'}
                 </label>
               </div>
 
@@ -186,7 +213,7 @@ export default function ContactModal() {
                   className="mt-1 size-5 rounded border-stroke-3 dark:border-stroke-7 text-primary dark:text-accent focus:ring-2 focus:ring-primary dark:focus:ring-accent cursor-pointer"
                 />
                 <label htmlFor="sms-transactional-consent" className="text-sm text-secondary/80 dark:text-accent/80 cursor-pointer">
-                  I agree to receive automated transactional and service-based text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.
+                  {a2pSettings?.transactional_consent_text || 'I agree to receive automated transactional and service-based text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.'}
                 </label>
               </div>
 
