@@ -16,13 +16,14 @@ async function verifyAdmin(accessToken: string | undefined) {
 // GET /api/content/sections/[page] - Get all sections for a page (public)
 export async function GET(
   request: Request,
-  { params }: { params: { page: string } }
+  { params }: { params: Promise<{ page: string }> }
 ) {
+  const { page } = await params
   const supabase = createClient(supabaseUrl, supabaseServiceKey)
   const { data, error } = await supabase
     .from('content_sections')
     .select('*')
-    .eq('page_type', params.page)
+    .eq('page_type', page)
     .eq('enabled', true)
     .order('display_order', { ascending: true })
 
@@ -36,8 +37,9 @@ export async function GET(
 // PUT /api/content/sections/[page] - Update a specific section (admin only)
 export async function PUT(
   request: Request,
-  { params }: { params: { page: string } }
+  { params }: { params: Promise<{ page: string }> }
 ) {
+  const { page } = await params
   const cookieStore = await cookies()
   const accessToken = cookieStore.get('sb-access-token')?.value
 
@@ -64,7 +66,7 @@ export async function PUT(
   const { data, error } = await supabase
     .from('content_sections')
     .update(updateData)
-    .eq('page_type', params.page)
+    .eq('page_type', page)
     .eq('section_key', section_key)
     .select()
     .single()
