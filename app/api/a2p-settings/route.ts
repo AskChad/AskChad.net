@@ -4,7 +4,12 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
-// GET /api/a2p-settings - Get A2P settings (public)
+/**
+ * GET /api/a2p-settings - Get A2P settings (public)
+ * Returns settings with field names matching the frontend interface:
+ * - marketing_consent_text (not marketing_sms_consent_text)
+ * - transactional_consent_text (not transactional_sms_consent_text)
+ */
 export async function GET() {
   try {
     const supabase = createClient(supabaseUrl, supabaseServiceKey)

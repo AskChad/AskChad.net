@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS public.a2p_settings (
   business_hours TEXT NOT NULL DEFAULT 'Mon-Fri, 9 AM - 5 PM',
   time_zone TEXT NOT NULL DEFAULT 'PST',
 
-  -- A2P SMS Consent Text
+  -- A2P SMS Consent Text (without _sms_ to match frontend interface)
   marketing_consent_text TEXT NOT NULL DEFAULT 'I agree to receive automated marketing text messages from {brand_name} at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for assistance or STOP to opt out at any time.',
   transactional_consent_text TEXT NOT NULL DEFAULT 'I agree to receive automated transactional and service-related text messages from {brand_name} at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for assistance or STOP to opt out at any time.',
 
