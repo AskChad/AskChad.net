@@ -225,7 +225,9 @@ export default function ContactModal() {
               {/* Global Disclosure Text */}
               {a2pSettings?.global_disclosure_text && (
                 <div className="text-xs text-secondary/60 dark:text-accent/60 bg-gray-50 dark:bg-background-6 p-3 rounded-lg border border-stroke-2 dark:border-stroke-7 whitespace-pre-line">
-                  {a2pSettings.global_disclosure_text.replace(/\{brand_name\}/g, a2pSettings?.a2p_brand_name || a2pSettings?.company_name || 'AskChad')}
+                  {a2pSettings.global_disclosure_text
+                    .replace(/\\n/g, '\n')
+                    .replace(/\{brand_name\}/g, a2pSettings?.a2p_brand_name || a2pSettings?.company_name || 'AskChad')}
                 </div>
               )}
 

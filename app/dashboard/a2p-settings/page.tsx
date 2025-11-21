@@ -239,11 +239,11 @@ export default function A2PSettingsPage() {
               <div className="mt-2 p-3 bg-gray-50 dark:bg-background-5 rounded border border-gray-200 dark:border-gray-700">
                 <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Preview:</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line">
-                  {previewConsentText(settings.global_disclosure_text || '', settings.a2p_brand_name)}
+                  {previewConsentText((settings.global_disclosure_text || '').replace(/\\n/g, '\n'), settings.a2p_brand_name)}
                 </p>
               </div>
               <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                Tip: Press Enter in the text box to create new lines.
+                Tip: Use \n for line breaks, or press Enter in the text box.
               </p>
             </div>
           </div>
