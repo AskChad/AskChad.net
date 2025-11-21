@@ -17,6 +17,7 @@ interface A2PSettings {
   time_zone?: string
   marketing_sms_consent_text: string
   transactional_sms_consent_text: string
+  global_disclosure_text?: string
 }
 
 export default function ContactPage() {
@@ -238,6 +239,13 @@ export default function ContactPage() {
                     {a2pSettings?.transactional_sms_consent_text?.replace('{brand_name}', a2pSettings?.a2p_brand_name || a2pSettings?.company_name || 'AskChad') || 'I agree to receive automated transactional and service-based text messages from AskChad at the phone number provided. Message frequency varies. Message & data rates may apply. Reply HELP for help, STOP to end.'}
                   </label>
                 </div>
+
+                {/* Global Disclosure Text */}
+                {a2pSettings?.global_disclosure_text && (
+                  <div className="text-xs text-secondary/60 dark:text-accent/60 bg-gray-50 dark:bg-background-6 p-3 rounded-lg border border-stroke-2 dark:border-stroke-7">
+                    {a2pSettings.global_disclosure_text.replace(/\{brand_name\}/g, a2pSettings?.a2p_brand_name || a2pSettings?.company_name || 'AskChad')}
+                  </div>
+                )}
 
                 {/* Submit Button */}
                 <button

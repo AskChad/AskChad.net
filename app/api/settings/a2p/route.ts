@@ -62,6 +62,7 @@ export async function PUT(request: Request) {
     const {
       marketing_sms_consent_text,
       transactional_sms_consent_text,
+      global_disclosure_text,
       a2p_brand_name,
       privacy_policy_url,
       terms_of_service_url,
@@ -84,6 +85,7 @@ export async function PUT(request: Request) {
       .update({
         marketing_sms_consent_text,
         transactional_sms_consent_text,
+        global_disclosure_text,
         a2p_brand_name,
         privacy_policy_url,
         terms_of_service_url,

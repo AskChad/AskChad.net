@@ -7,6 +7,7 @@ interface A2PSettings {
   id: string
   marketing_sms_consent_text: string
   transactional_sms_consent_text: string
+  global_disclosure_text: string
   a2p_brand_name: string
   privacy_policy_url: string
   terms_of_service_url: string
@@ -214,6 +215,32 @@ export default function A2PSettingsPage() {
                     {previewConsentText(settings.transactional_sms_consent_text, settings.a2p_brand_name)}
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section: Global Disclosure and Clarification */}
+          <div className="bg-white dark:bg-background-8 rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-4">Global Disclosure and Clarification</h2>
+            <p className="text-sm text-secondary/70 dark:text-accent/70 mb-6">
+              This text appears below the SMS consent checkboxes on all contact forms. Use {'{brand_name}'} as a placeholder.
+            </p>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Global Disclosure Text
+              </label>
+              <textarea
+                value={settings.global_disclosure_text || ''}
+                onChange={(e) => updateField('global_disclosure_text', e.target.value)}
+                rows={5}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent bg-white dark:bg-background-5"
+              />
+              <div className="mt-2 p-3 bg-gray-50 dark:bg-background-5 rounded border border-gray-200 dark:border-gray-700">
+                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Preview:</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  {previewConsentText(settings.global_disclosure_text || '', settings.a2p_brand_name)}
+                </p>
               </div>
             </div>
           </div>
